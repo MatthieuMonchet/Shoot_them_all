@@ -1,3 +1,4 @@
+from this import s
 import pygame, sys
 
 pygame.init()
@@ -13,6 +14,7 @@ background_surface = pygame.image.load(r"../Jeu de vaisseaux/asteroid_shooter_fi
 # import de la police
 font = pygame.font.Font(r"../Jeu de vaisseaux/asteroid_shooter_files/project_2 - Surfaces/graphics/subatomic.ttf",50)
 text_font = font.render("SPACE",True,(255,255,255))
+text_rect = text_font.get_rect(midbottom = (WINDOW_WIDTH/2,WINDOW_HEIGHT))
 while True: # garde le jeu ouvert
 
     # 1. inputs (click, mouse movement, etc) --> events dans pygame
@@ -24,8 +26,10 @@ while True: # garde le jeu ouvert
     # 2. updates
     display_surface.fill((0,0,0))
     display_surface.blit(background_surface,(0,0))
+    if ship_rect.top > 0:
+        ship_rect.y -= 4
     display_surface.blit(ship_surface,ship_rect)
-    display_surface.blit(text_font,(500,200))
+    display_surface.blit(text_font,text_rect)
 
 
     
